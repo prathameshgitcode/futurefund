@@ -10,6 +10,7 @@ import { AmfiBadge } from "@/components/ui/AmfiBadge";
 import { getWatchlist, WATCHLIST_EVENT } from "@/lib/watchlist/watchlistStore";
 import { cn } from "@/lib/utils/cn";
 import { Logo } from "@/components/ui/Logo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const { dict } = useTranslation();
@@ -75,10 +76,11 @@ export function Header() {
               </span>
             )}
           </Link>
+          <ThemeToggle />
           <LanguageSwitcher />
           <Link
             href="/quiz"
-            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white hover:bg-black transition-colors focus-ring"
+            className="rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-white hover:bg-green-600 transition-colors focus-ring"
           >
             {dict.nav.getStarted}
           </Link>
@@ -106,7 +108,10 @@ export function Header() {
             </Link>
           ))}
           <div className="flex items-center justify-between pt-2">
-            <LanguageSwitcher />
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <LanguageSwitcher />
+            </div>
             <Link
               href="/quiz"
               onClick={() => setMobileOpen(false)}
